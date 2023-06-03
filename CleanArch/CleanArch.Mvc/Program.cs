@@ -1,5 +1,7 @@
 using CleanArch.Infra.Data.Context;
+using CleanArch.Infra.Ioc;
 using CleanArch.Mvc.Data;
+using FluentAssertions.Common;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,12 +16,17 @@ var connectionStringNew = builder.Configuration.GetConnectionString("myconnectio
 builder.Services.AddDbContext<UniversityDBContext>(options =>
     options.UseSqlServer(connectionStringNew));
 
+RegisterServices(builder.Services);
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>()
     .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 builder.Services.AddControllersWithViews();
+
+
+
+
 
 var app = builder.Build();
 
@@ -49,3 +56,9 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 app.Run();
+
+
+ static void RegisterServices(IServiceCollection services)
+{
+    DependencyContainer.RegisterServices(services);
+}
