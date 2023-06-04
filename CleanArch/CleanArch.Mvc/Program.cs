@@ -16,6 +16,7 @@ var connectionStringNew = builder.Configuration.GetConnectionString("myconnectio
 builder.Services.AddDbContext<UniversityDBContext>(options =>
     options.UseSqlServer(connectionStringNew));
 
+
 RegisterServices(builder.Services);
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
