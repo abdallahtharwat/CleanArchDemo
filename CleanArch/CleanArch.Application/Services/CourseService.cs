@@ -22,7 +22,7 @@ namespace CleanArch.Application.Services
             _Bus = Bus; 
         }
 
-        public void Craeate(CourseViewModel courseViewModel)
+        public void Create(CourseViewModel courseViewModel)
         {
             var CreateCourseCommand = new CreateCourseCommand
                 (

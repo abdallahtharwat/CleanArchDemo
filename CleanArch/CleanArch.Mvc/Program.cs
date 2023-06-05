@@ -2,6 +2,7 @@ using CleanArch.Infra.Data.Context;
 using CleanArch.Infra.Ioc;
 using CleanArch.Mvc.Data;
 using FluentAssertions.Common;
+using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,7 +17,7 @@ var connectionStringNew = builder.Configuration.GetConnectionString("myconnectio
 builder.Services.AddDbContext<UniversityDBContext>(options =>
     options.UseSqlServer(connectionStringNew));
 
-
+builder.Services.AddMediatR(typeof(DependencyContainer));
 RegisterServices(builder.Services);
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
