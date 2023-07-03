@@ -19,7 +19,18 @@ namespace CleanArch.Infra.Data.Repository
                 
             _ctx = ctx;
         }
+<<<<<<< Updated upstream
         public IEnumerable<Course> GetCourses()
+=======
+
+        public void Add(Course course)
+        {
+            _ctx.Courses.Add(course);
+            _ctx.SaveChanges();
+        }
+
+        public IQueryable<Course> GetCourses()
+>>>>>>> Stashed changes
         {
             return _ctx.Courses;
         }

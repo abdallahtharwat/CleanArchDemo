@@ -9,6 +9,11 @@ namespace CleanArch.Domain.Interfaces
 {
     public interface ICourseRepository
     {
+<<<<<<< Updated upstream
         IEnumerable<Course> GetCourses();
+=======
+        IQueryable<Course> GetCourses();
+        void Add(Course course);
+>>>>>>> Stashed changes
     }
 }

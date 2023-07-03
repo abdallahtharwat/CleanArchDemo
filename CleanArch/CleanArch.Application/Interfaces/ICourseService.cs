@@ -10,6 +10,12 @@ namespace CleanArch.Application.Interfaces
 {
     public interface ICourseService
     {
+<<<<<<< Updated upstream
         CourseViewModel GetCourses();
+=======
+        IEnumerable<CourseViewModel> GetCourses();
+        void Create(CourseViewModel courseViewModel);
+
+>>>>>>> Stashed changes
     }
 }
