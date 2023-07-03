@@ -16,7 +16,7 @@ namespace CleanArch.Application.AutoMapper
         {
             //CreateMap<CourseViewModel, CreateCourseCommand>().ConstructUsing(c => new CreateCourseCommand(c.Name, c.Description, c.ImageUrl));
 
-            CreateMap<CourseViewModel, CreateCourseCommand>();
+           // CreateMap<CourseViewModel, CreateCourseCommand>();
             
 
         }
