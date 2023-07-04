@@ -86,7 +86,7 @@ namespace CleanArch.Mvc.Controllers
         // button Minus
         public IActionResult Minus(int cartId)
         {
-            var cartFromDb = _shoppingCartService.Get(u => u.Id == cartId, tracked: true);
+            var cartFromDb = _shoppingCartService.Get(u => u.Id == cartId, tracked: false);
             if (cartFromDb.Count <= 1)
             {
                 // if count < 1 we want remove that from cart
@@ -109,7 +109,7 @@ namespace CleanArch.Mvc.Controllers
         // button Remove
         public IActionResult Remove(int cartId)
         {
-            var cartFromDb = _shoppingCartService.Get(u => u.Id == cartId, tracked: true);
+            var cartFromDb = _shoppingCartService.Get(u => u.Id == cartId, tracked: false);
             _shoppingCartService.Remove(cartFromDb);
 
             HttpContext.Session.SetInt32(SD.SessionCart, _shoppingCartService  // when we remove product from shopping cart hysam3 fe shopping cart icon

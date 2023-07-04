@@ -1,18 +1,20 @@
 ﻿@model IEnumerable<Product>
 
-   <div class="home" id="home">
+
+<div class="home" id="home">
     <div class="abdallah">
-        <ul >
-            <li><a asp-route-id="1"  asp-route-categorryid="23" asp-controller="Men" asp-action="MenTrousers">Men <br /> Trousers</a></li>
-            <li><a asp-route-id="1" asp-route-categorryid="20" asp-controller="Men" asp-action="MenTshirt">Men <br />  T-Shirt</a></li>
-            <li><a asp-route-id="1" asp-route-categorryid="21" asp-controller="Men" asp-action="Menshirt">Men <br />  Shirt</a></li>
-            <li><a asp-route-id="1" asp-route-categorryid="22" asp-controller="Men" asp-action="MenBlazer">Men <br />  Blazer</a></li>
-            <li><a asp-route-id="1" asp-route-categorryid="2" asp-controller="Men" asp-action="MenJeans">Men <br />  Jeans</a></li>
+        <ul>
+            <li><a asp-route-id="2" asp-route-categorryid="23" asp-controller="Woman" asp-action="WomanTrousers">Woman <br /> Trousers</a></li>
+            <li><a asp-route-id="2" asp-route-categorryid="20" asp-controller="Woman" asp-action="WomanTshirt">Woman <br />  T-Shirt</a></li>
+            <li><a asp-route-id="2" asp-route-categorryid="21" asp-controller="Woman" asp-action="Womanshirt">Woman <br />  Shirt</a></li>
+            <li><a asp-route-id="2" asp-route-categorryid="22" asp-controller="Woman" asp-action="WomanBlazer">Woman <br />  Blazer</a></li>
+            <li><a asp-route-id="2" asp-route-categorryid="2" asp-controller="Woman" asp-action="WomanJeans">Woman <br />  Jeans</a></li>
         </ul>
     </div>
 
-  </div>
+</div>
 
+    <div class="">
     <div class="row pb-3">
         <h2 class="title text-center"></h2>
         @foreach (var product in Model)
@@ -48,8 +50,8 @@
                             </div>
                             <div>
                                 <a asp-controller="Home" asp-action="Details"
-                                   asp-route-productid="@product.Id"
-                                   class="btn btn-success bg-gradient border-0 form-control">
+                               asp-route-productid="@product.Id"
+                               class="btn btn-success bg-gradient border-0 form-control">
                                     More  Details
                                 </a>
                             </div>
@@ -59,3 +61,5 @@
             </div>
         }
     </div>
+    </div>
+

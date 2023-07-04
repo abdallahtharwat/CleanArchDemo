@@ -56,11 +56,25 @@
         padding-right: 20px;
     }
 
+.home .abdallah ul {
+    list-style: none;
+    text-align: center;
+}
+
+    .home .abdallah ul li {
+        display: inline-block;
+        padding: 20px;
+    }
+
+        .home .abdallah ul li a {
+            color: black;
+            font-size: 20px;
+            text-decoration: none;
+        }
 
 
 
-
-    p {
+    .nouh {
         color: #555;
         margin-left: 60px;
     }

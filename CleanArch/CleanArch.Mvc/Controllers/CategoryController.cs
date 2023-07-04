@@ -111,7 +111,7 @@ namespace CleanArch.Mvc.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult Deletepost(int? id)
         {
-            // Category? obj = _db.Category.Get(u => u.Id == id);
+      
             Category obj = _categoryService.Get(u => u.Id == id);
             if (obj == null)
             {
