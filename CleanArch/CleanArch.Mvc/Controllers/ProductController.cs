@@ -2,6 +2,7 @@
 using CleanArch.Application.ViewModel;
 using CleanArch.Domain.Models;
 using CleanArch.Domain.ViewModel;
+using CleanArch.Mvc.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CleanArch.Mvc.Controllers
 {
-    [Authorize]
+   
     public class ProductController : Controller
     {
         private IProductService  _productService;
@@ -33,7 +34,7 @@ namespace CleanArch.Mvc.Controllers
             return View(objproductlist);
         }
 
-
+        [Authorize(Roles = SD.Role_Admin)]
         // get create
         public IActionResult Upsert(int? id)
         {
@@ -139,30 +140,30 @@ namespace CleanArch.Mvc.Controllers
 
 
 
-        //public IActionResult DeleteImage(int imageId)  // in the parameter here we will receive image ID based on (asp-route-image-id in view)
-        //{
-        //    var imageToBeDeleted = _productImageService.Get(u => u.Id == imageId);  //  based on image ID we will retrieve the images that we have to delete
-        //    int productId = imageToBeDeleted.ProductId; // we need product Id
-        //    if (imageToBeDeleted != null)
-        //    {
-        //       if (!string.IsNullOrEmpty(imageToBeDeleted.ImageUrl))
-        //        {
-        //            var oldImagePath = Path.Combine(_WebHostEnvironment.WebRootPath, imageToBeDeleted.ImageUrl.TrimStart('\\')); // we can retrieve the old image path and delete it  
+        public  async  Task<IActionResult >DeleteImage(int imageId)  // in the parameter here we will receive image ID based on (asp-route-image-id in view)
+        {
+            var imageToBeDeleted = _productImageService.Get(u => u.Id == imageId);  //  based on image ID we will retrieve the images that we have to delete
+            int productId = imageToBeDeleted.ProductId; // we need product Id
+            if (imageToBeDeleted != null)
+            {
+               if (!string.IsNullOrEmpty(imageToBeDeleted.ImageUrl))
+                {
+                    var oldImagePath = Path.Combine(_WebHostEnvironment.WebRootPath, imageToBeDeleted.ImageUrl.TrimStart('\\')); // we can retrieve the old image path and delete it  
 
-        //            if (System.IO.File.Exists(oldImagePath))
-        //          {
-        //                System.IO.File.Delete(oldImagePath);
-        //            }
-        //        }
+                    if (System.IO.File.Exists(oldImagePath))
+                  {
+                        System.IO.File.Delete(oldImagePath);
+                   }
+               }
 
-        //       _productImageService.Remove(imageToBeDeleted);
+              await  _productImageService.Remove(imageToBeDeleted.Id);
                 
 
-        //        TempData["success"] = "Deleted successfully";
-        //    }
+                TempData["success"] = "Deleted successfully";
+            }
 
-        //    return RedirectToAction(nameof(Upsert), new { id = productId });
-        //}
+            return RedirectToAction(nameof(Upsert), new { id = productId });
+        }
 
 
 
@@ -177,7 +178,7 @@ namespace CleanArch.Mvc.Controllers
             return Json(new { data = objproductlist });
         }
 
-
+        [Authorize(Roles = SD.Role_Admin)]
         [HttpDelete]
         public async Task<IActionResult> Delete(int? id)
         {

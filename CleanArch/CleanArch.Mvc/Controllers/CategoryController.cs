@@ -1,12 +1,13 @@
 ﻿using CleanArch.Application.Interfaces;
 using CleanArch.Application.ViewModel;
 using CleanArch.Domain.Models;
+using CleanArch.Mvc.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArch.Mvc.Controllers
 {
-    [Authorize]
+  
     public class CategoryController : Controller
     {
         private ICategoryService _categoryService;
@@ -22,7 +23,7 @@ namespace CleanArch.Mvc.Controllers
         }
 
 
-
+        [Authorize(Roles = SD.Role_Admin)]
         // get create
         public IActionResult Create()
         {
@@ -51,7 +52,7 @@ namespace CleanArch.Mvc.Controllers
             return View();
         }
 
-
+        [Authorize(Roles = SD.Role_Admin)]
         // get Edit
         public IActionResult Edit(int? id)
         {
@@ -87,7 +88,7 @@ namespace CleanArch.Mvc.Controllers
             return View();
         }
 
-
+        [Authorize(Roles = SD.Role_Admin)]
         // get Delete
         public IActionResult Delete(int? id)
         {

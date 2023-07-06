@@ -4,7 +4,7 @@ using CleanArch.Application.ViewModel;
 using CleanArch.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
 using CleanArch.Application.Services;
-
+using CleanArch.Mvc.Utility;
 
 namespace CleanArch.Mvc.Controllers
 {
@@ -23,7 +23,7 @@ namespace CleanArch.Mvc.Controllers
         }
 
 
-
+        [Authorize(Roles = SD.Role_Admin)]
         // get create
         public IActionResult Create()
         {
@@ -48,7 +48,7 @@ namespace CleanArch.Mvc.Controllers
             return View();
         }
 
-
+        [Authorize(Roles = SD.Role_Admin)]
         // get Edit
         public IActionResult Edit(int? id)
         {
@@ -84,7 +84,7 @@ namespace CleanArch.Mvc.Controllers
             return View();
         }
 
-
+        [Authorize(Roles = SD.Role_Admin)]
         // get Delete
         public IActionResult Delete(int? id)
         {

@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CleanArch.Mvc.Controllers
 {
-    [Authorize]     // authorize for route 
+         // authorize for route 
     public class UserController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
@@ -30,7 +30,7 @@ namespace CleanArch.Mvc.Controllers
             return View();
         }
 
-
+        [Authorize(Roles = SD.Role_Admin)]
         public IActionResult RoleManagment(string userId)
         {
 
