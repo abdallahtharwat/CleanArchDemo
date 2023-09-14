@@ -30,6 +30,7 @@ namespace CleanArch.Infra.Data.Context
         public DbSet<ShopingCart>    shopingCarts { get; set; }
         public DbSet<OrderHeader>     orderHeaders { get; set; }
         public DbSet<OrderDetail>     orderDetails { get; set; }
+        public DbSet<service>    services { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -50,6 +51,13 @@ namespace CleanArch.Infra.Data.Context
            new type { Id = 2, Name = "Woman", DisplayOrder = 2 },
            new type { Id = 3, Name = "Kides", DisplayOrder = 3 },
            new type { Id = 4, Name = "teenagers", DisplayOrder = 4 }
+          );
+
+                               modelBuilder.Entity<service>().HasData(
+           new service { Id = 1, Title = "Bank Account", Description = "Our experienced advisors have a vast understanding of UAE banking regulations and procedures.", Iconservice = " <i class='bx bxs-check-shield'></i>" },
+           new service { Id = 2, Title = "Licenses and Permits", Description = "Our knowledgeable team will navigate the complexities and requirements of various licenses and permits", Iconservice = " <i class='bx bxs-check-shield'></i>" },
+           new service { Id = 3, Title = "Free Consultancy", Description = "Guide you through the essential steps for setting up a successful business.", Iconservice = " <i class='bx bxs-check-shield'></i>" }
+           
           );
 
 

@@ -1,4 +1,5 @@
 using CleanArch.Application.Interfaces;
+using CleanArch.Application.Services;
 using CleanArch.Application.ViewModel;
 using CleanArch.Domain.Models;
 using CleanArch.Domain.ViewModel;
@@ -26,7 +27,25 @@ namespace CleanArch.Api.Controllers
         {
             var get = _applicationUserService.GetAll(includeproperties: "Company");
 
- 
+
+
+            return Ok(get);
+        }
+
+        [HttpGet("{id:int}")]
+        public IActionResult getbyid(string id)
+        {
+            if (id == null)
+            {
+                return BadRequest();
+            }
+
+            var get = _applicationUserService.Get(u => u.Id == id);
+
+            if (get == null)
+            {
+                return NotFound();
+            }
 
             return Ok(get);
         }
@@ -37,6 +56,13 @@ namespace CleanArch.Api.Controllers
             _applicationUserService.add(applicationUser);
            
             return Ok(applicationUser);
+        }
+
+        [HttpDelete("{id:int}")]
+        public IActionResult deletebyid(string id)
+        {
+            var get = _applicationUserService.Get(u => u.Id == id);
+            return Ok(get);
         }
 
 

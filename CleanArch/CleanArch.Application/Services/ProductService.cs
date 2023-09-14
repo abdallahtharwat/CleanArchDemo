@@ -25,7 +25,7 @@ namespace CleanArch.Application.Services
         private readonly IMapper _mapper;
 
 
-        public ProductService(IProductRepository  productRepository, IMediatorHandler Bus, IMapper mapper)
+        public ProductService(IProductRepository productRepository, IMediatorHandler Bus, IMapper mapper)
         {
 
             _productRepository = productRepository;

@@ -4,6 +4,7 @@ using CleanArch.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CleanArch.Infra.Data.Migrations
 {
     [DbContext(typeof(UniversityDBContext))]
-    partial class UniversityDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230817121422_addservicetable")]
+    partial class addservicetable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -402,10 +404,6 @@ namespace CleanArch.Infra.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Iconservice")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -419,21 +417,18 @@ namespace CleanArch.Infra.Data.Migrations
                         {
                             Id = 1,
                             Description = "Our experienced advisors have a vast understanding of UAE banking regulations and procedures.",
-                            Iconservice = " <i class='bx bxs-check-shield'></i>",
                             Title = "Bank Account"
                         },
                         new
                         {
                             Id = 2,
                             Description = "Our knowledgeable team will navigate the complexities and requirements of various licenses and permits",
-                            Iconservice = " <i class='bx bxs-check-shield'></i>",
                             Title = "Licenses and Permits"
                         },
                         new
                         {
                             Id = 3,
                             Description = "Guide you through the essential steps for setting up a successful business.",
-                            Iconservice = " <i class='bx bxs-check-shield'></i>",
                             Title = "Free Consultancy"
                         });
                 });

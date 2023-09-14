@@ -13,9 +13,9 @@ namespace CleanArch.Domain.CommandHandler.Products
 {
     public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, bool>
     {
-        private IProductRepository  _productRepository;
+        private IProductRepository _productRepository;
 
-        public CreateProductCommandHandler(IProductRepository  productRepository)
+        public CreateProductCommandHandler(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }

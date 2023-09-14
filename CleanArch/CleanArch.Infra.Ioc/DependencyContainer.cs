@@ -35,6 +35,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CleanArch.Infra.Bus;
+using CleanArch.Domain.Commands.Service;
+using CleanArch.Domain.CommandHandler.Services;
 
 namespace CleanArch.Infra.Ioc
 {
@@ -93,11 +95,15 @@ namespace CleanArch.Infra.Ioc
             services.AddScoped<IRequestHandler<EditOrderDetailCommand, bool>, EditOrderDetailCommandHandler>();
             services.AddScoped<IRequestHandler<DeleteOrderDetailCommand, bool>, DeleteOrderDetailCommandHandler>();
 
+            services.AddScoped<IRequestHandler<CreateServiceCommand, bool>, CreateServiceCommandHandler>();
+            services.AddScoped<IRequestHandler<EditServiceCommand, bool>, EditServiceCommandHandler>();
+            services.AddScoped<IRequestHandler<DeleteServiceCommand, bool>, DeleteServiceCommandHandler>();
+
 
 
 
             // application layer
-      
+
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IProductImageService, ProductImageService>();
@@ -107,6 +113,7 @@ namespace CleanArch.Infra.Ioc
             services.AddScoped<IApplicationUserService, ApplicationUserService>();
             services.AddScoped<IOrderHeaderService, OrderHeaderService>();
             services.AddScoped<IOrderDetailService, OrderDetailService>();
+            services.AddScoped<IServiceService, ServiceService>();
 
             // Infra.Data  Layer
           
@@ -121,6 +128,7 @@ namespace CleanArch.Infra.Ioc
             services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
             services.AddScoped<IOrderHeaderRepository, OrderHeaderRepository>();
             services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
+            services.AddScoped<IServiceRepository, ServiceRepository>();
 
             //services.AddScoped<UniversityDBContext>();
 
